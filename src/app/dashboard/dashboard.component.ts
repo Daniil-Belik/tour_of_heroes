@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Component } from '@angular/core';
+import { HeroInterface } from '../shared/types/hero.interface';
+import { HeroService } from '../shared/services/hero.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+export class DashboardComponent {
+
+  heroes: HeroInterface[] = [];
 
   constructor(private heroService: HeroService) { }
 
@@ -20,4 +21,5 @@ export class DashboardComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
+
 }
